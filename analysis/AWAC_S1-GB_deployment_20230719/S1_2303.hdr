@@ -1,0 +1,305 @@
+[C:\Users\Uporabnik\Documents\AWAC\20230504_CNR-S1_deployment\S1_2303.wpr]
+---------------------------------------------------------------------
+Number of measurements                6769
+Number of checksum errors             0
+Time of first measurement             18/07/2023 14:00:00
+Time of last measurement              08/11/2023 09:00:00
+
+User setup
+---------------------------------------------------------------------
+Profile interval                      1800 sec
+Number of cells                       50
+Cell size                             50 cm
+Average interval                      480 sec
+Measurement load                      63 %
+Transmit pulse length                 0.50 m
+Blanking distance                     0.40 m
+Compass update rate                   600 sec
+Wave measurements                     ENABLED
+Wave - Powerlevel                     HIGH
+Wave - Interval                       7200 sec
+Wave - Number of samples              512
+Wave - Sampling rate                  1 Hz
+Wave - SUV data collection            DISABLED
+Wave - Ice data collection            DISABLED
+Onboard wave processing               DISABLED
+Analog input 1                        NONE
+Analog input 2                        NONE
+Power output                          DISABLED
+Powerlevel                            HIGH
+Coordinate system                     ENU
+Sound speed                           MEASURED
+Salinity                              35.0 ppt
+Distance between pings                46.85 m
+Number of beams                       3
+Number of pings per burst             5
+Software version                      2.00.02
+Deployment name                       S1_23
+Wrap mode                             OFF
+Deployment time                       18/07/2023 14:00:00
+Comments                              Station S1 - Po delta - JERICO-S3 project PoGo - July 2023
+System1                               46
+System2                               44
+System3                               12
+System4                               2047
+System5                               512
+System9                               0
+System10                              0
+System11                              0
+System12                              0
+System13                              0
+System14                              600
+System16                              50
+System17                              2945
+System22                              7200
+System28                              1
+System29                              0
+System30                              4
+System31                              15618 15646 15673 15699
+System32                              6
+System33                              29490
+System34                              200
+System35                              787
+System36                              12851
+System38                              100
+System39                              9
+System40                              409
+System41                              0
+System42                              0
+System43                              0
+System44                              0
+System45                              6
+Start command                         Recorder deployment
+CRC download                          ON
+
+Hardware configuration
+---------------------------------------------------------------------
+Serial number                         WPR 0484
+Internal code version                 13
+Hardware revision                     0 (A)
+Recorder size                         154 MByte
+Firmware version                      1.19 AST
+Velocity range                        NORMAL
+
+Head configuration
+---------------------------------------------------------------------
+Pressure sensor                       YES
+Compass                               YES
+Tilt sensor                           YES
+System 1                              0
+Head frequency                        1000 kHz
+Serial number                         WAV 5486
+Transformation matrix                 1.5774 -0.7891 -0.7891
+                                      0.0000 -1.3662 1.3662
+                                      0.3677 0.3677 0.3677
+Magnetometer calibration matrix       0.9726 -0.0049 0.0167
+                                      -0.0197 0.9269 0.0074
+                                      0.0170 0.0075 1.0000
+Compass hard iron calibration         -71 -58 35
+Pressure sensor calibration           0 0 8653 16204
+Number of beams                       3
+System5                               25 25 25 0
+System7                               -20878 -860 11973 178
+                                      -21129 -179 12082 -30
+System8                               1 0 0
+                                      0 1 0
+                                      0 0 1
+System9                               1 0 0
+                                      0 -1 0
+                                      0 0 -1
+System10                              0 1 1 0
+System11                              0 1 -1 0
+System13                              11847 18809 19217 26842
+System14                              -21253 2474 11896 -444
+                                      -19562 -720 11769 121
+System15                              31868 -159 547 -646
+                                      30373 244 558 245
+                                      32767 -71 -58 35
+                                      0 0 0 0
+System16                              0 0 0 0
+System17                              5461
+System18                              3600
+System19                              3600
+System20                              10000
+
+
+Current profile cell center distance from head (m)
+---------------------------------------------------------------------
+  1    0.90
+  2    1.40
+  3    1.90
+  4    2.40
+  5    2.90
+  6    3.40
+  7    3.90
+  8    4.40
+  9    4.90
+ 10    5.40
+ 11    5.90
+ 12    6.40
+ 13    6.90
+ 14    7.40
+ 15    7.90
+ 16    8.40
+ 17    8.90
+ 18    9.40
+ 19    9.90
+ 20   10.40
+ 21   10.90
+ 22   11.40
+ 23   11.90
+ 24   12.40
+ 25   12.90
+ 26   13.40
+ 27   13.90
+ 28   14.40
+ 29   14.90
+ 30   15.40
+ 31   15.90
+ 32   16.40
+ 33   16.90
+ 34   17.40
+ 35   17.90
+ 36   18.40
+ 37   18.90
+ 38   19.40
+ 39   19.90
+ 40   20.40
+ 41   20.90
+ 42   21.40
+ 43   21.90
+ 44   22.40
+ 45   22.90
+ 46   23.40
+ 47   23.90
+ 48   24.40
+ 49   24.90
+ 50   25.40
+
+Data file format
+---------------------------------------------------------------------
+[C:\Users\Uporabnik\Documents\AWAC\20230504_CNR-S1_deployment\S1_2303.v1]
+ 1   Velocity Cell 1 (Beam1|X|East)   (m/s)
+ 2   Velocity Cell 2 (Beam1|X|East)   (m/s)
+     .
+     .
+ n   Velocity Cell n (Beam1|X|East)   (m/s)
+---------------------------------------------------------------------
+[C:\Users\Uporabnik\Documents\AWAC\20230504_CNR-S1_deployment\S1_2303.v2]
+ 1   Velocity Cell 1 (Beam2|Y|North)  (m/s)
+ 2   Velocity Cell 2 (Beam2|Y|North)  (m/s)
+     .
+     .
+ n   Velocity Cell n (Beam2|Y|North)  (m/s)
+---------------------------------------------------------------------
+[C:\Users\Uporabnik\Documents\AWAC\20230504_CNR-S1_deployment\S1_2303.v3]
+ 1   Velocity Cell 1 (Beam3|Z|Up)     (m/s)
+ 2   Velocity Cell 2 (Beam3|Z|Up)     (m/s)
+     .
+     .
+ n   Velocity Cell n (Beam3|Z|Up)     (m/s)
+---------------------------------------------------------------------
+[C:\Users\Uporabnik\Documents\AWAC\20230504_CNR-S1_deployment\S1_2303.a1]
+ 1   Amplitude Cell 1 (Beam1)         (counts)
+ 2   Amplitude Cell 2 (Beam1)         (counts)
+     .
+     .
+ n   Amplitude Cell n (Beam1)         (counts)
+---------------------------------------------------------------------
+[C:\Users\Uporabnik\Documents\AWAC\20230504_CNR-S1_deployment\S1_2303.a2]
+ 1   Amplitude Cell 1 (Beam2)         (counts)
+ 2   Amplitude Cell 2 (Beam2)         (counts)
+     .
+     .
+ n   Amplitude Cell n (Beam2)         (counts)
+---------------------------------------------------------------------
+[C:\Users\Uporabnik\Documents\AWAC\20230504_CNR-S1_deployment\S1_2303.a3]
+ 1   Amplitude Cell 1 (Beam3)         (counts)
+ 2   Amplitude Cell 2 (Beam3)         (counts)
+     .
+     .
+ n   Amplitude Cell n (Beam3)         (counts)
+---------------------------------------------------------------------
+[C:\Users\Uporabnik\Documents\AWAC\20230504_CNR-S1_deployment\S1_2303.sen]
+ 1   Month                            (1-12)
+ 2   Day                              (1-31)
+ 3   Year
+ 4   Hour                             (0-23)
+ 5   Minute                           (0-59)
+ 6   Second                           (0-59)
+ 7   Error code
+ 8   Status code
+ 9   Battery voltage                  (V)
+10   Soundspeed                       (m/s)
+11   Heading                          (degrees)
+12   Pitch                            (degrees)
+13   Roll                             (degrees)
+14   Pressure                         (dbar)
+15   Temperature                      (degrees C)
+16   Analog input 1
+17   Analog input 2
+
+---------------------------------------------------------------------
+[C:\Users\Uporabnik\Documents\AWAC\20230504_CNR-S1_deployment\S1_2303.whd]
+ 1   Month                            (1-12)
+ 2   Day                              (1-31)
+ 3   Year
+ 4   Hour                             (0-23)
+ 5   Minute                           (0-59)
+ 6   Second                           (0-59)
+ 7   Burst counter
+ 8   No of wave data records
+ 9   Cell position                    (m)
+10   Battery voltage                  (V)
+11   Soundspeed                       (m/s)
+12   Heading                          (degrees)
+13   Pitch                            (degrees)
+14   Roll                             (degrees)
+15   Minimum pressure                 (dbar)
+16   Maximum pressure                 (dbar)
+17   Temperature                      (degrees C)
+18   CellSize                         (m)
+19   Noise amplitude beam 1           (counts)
+20   Noise amplitude beam 2           (counts)
+21   Noise amplitude beam 3           (counts)
+22   Noise amplitude beam 4           (counts)
+23   AST window start                 (m)
+24   AST window size                  (m)
+25   AST window offset                (m)
+
+---------------------------------------------------------------------
+[C:\Users\Uporabnik\Documents\AWAC\20230504_CNR-S1_deployment\S1_2303.wad]
+ 1   Burst counter
+ 2   Ensemble counter
+ 3   Pressure                         (dbar)
+ 4   AST Distance1 (Beam4)            (m)
+ 5   AST Distance2 (Beam4)            (m)
+ 6   AST Quality (Beam4)              (counts)
+ 7   Analog input
+ 8   Velocity (Beam1)                 (m/s)
+ 9   Velocity (Beam2)                 (m/s)
+10   Velocity (Beam3)                 (m/s)
+11   Amplitude (Beam1)                (counts)
+12   Amplitude (Beam2)                (counts)
+13   Amplitude (Beam3)                (counts)
+
+---------------------------------------------------------------------
+[C:\Users\Uporabnik\Documents\AWAC\20230504_CNR-S1_deployment\S1_2303.stg]
+ 1   Burst counter
+ 2   Unused
+ 3   Pressure                         (dbar)
+ 4   AST Distance1 (Beam4)            (m)
+ 5   AST Distance2 (Beam4)            (m)
+ 6   AST Quality (Beam4)              (counts)
+ 7   Unused
+ 8   Velocity (Beam1)                 (m/s)
+ 9   Velocity (Beam2)                 (m/s)
+10   Velocity (Beam3)                 (m/s)
+11   Amplitude (Beam1)                (counts)
+12   Amplitude (Beam2)                (counts)
+13   Amplitude (Beam3)                (counts)
+14   Amplitude Cell 1                 (counts)
+15   Amplitude Cell 2                 (counts)
+     .
+     .
+     Amplitude Cell n                 (counts)

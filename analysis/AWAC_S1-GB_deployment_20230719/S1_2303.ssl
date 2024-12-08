@@ -1,0 +1,5 @@
+Date and Time              Ecode Scode Level      Description
+18/07/2023 14:00:00.000    00    30    Info       First measurement
+29/09/2023 10:00:00.000    00    31    Warning    Orientation changed to Down
+29/09/2023 10:30:00.000    00    30    Warning    Orientation changed to Up
+08/11/2023 09:00:00.000    00    30    Info       Last measurement
