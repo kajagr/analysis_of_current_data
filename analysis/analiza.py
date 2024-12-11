@@ -82,16 +82,58 @@ print("\nNorth-South component:")
 for depth, rmse in zip(depths_to_plot, rmse_values_north_south):
     print(f"Depth {depth}m: {rmse:.4f}")
 
+mae_e = [None] * len(depths_to_plot)
+mae_n = [None] * len(depths_to_plot)
 
 # Calculate MAE for each depth
-def calculate_mae(actual, predicted):
-    return np.mean(np.abs(actual - predicted))
+def calculate_mae_e(actual, predicted, i):
+    val = np.abs(actual - predicted)
+    mae_e[i] = val
+    return np.mean(val)
+
+# Calculate MAE for each depth
+def calculate_mae_n(actual, predicted, i):
+    val = np.abs(actual - predicted)
+    mae_n[i] = val
+    return np.mean(val)
 
 mae_values_east_west = np.zeros(len(depths_to_plot))
 mae_values_north_south = np.zeros(len(depths_to_plot))
 for i in range(len(depths_to_plot)):
-    mae_values_east_west[i] = calculate_mae(velocities[i]['v1'], velocities[i]['uo'])
-    mae_values_north_south[i] = calculate_mae(velocities[i]['v2'], velocities[i]['vo'])
+    mae_values_east_west[i] = calculate_mae_e(velocities[i]['v1'], velocities[i]['uo'], i)
+    mae_values_north_south[i] = calculate_mae_n(velocities[i]['v2'], velocities[i]['vo'], i)
+
+print(mae_e)
+
+# Plot absolute errors for East-West (mae_e)
+plt.figure(figsize=(15, 10))
+for i, depth in enumerate(depths_to_plot):
+    plt.subplot(2, 2, i + 1)
+    plt.plot(range(len(mae_e[i])), mae_e[i], color="blue", marker="s", markersize=4, linewidth=1)
+    plt.title(f"Globina {depth}m")
+    plt.xlabel("Datum")
+    plt.ylabel("Absolutna napaka")
+    plt.grid(True, linestyle="--", linewidth=0.5, alpha=0.7)
+    plt.xticks(np.arange(0, len(mae_e[i]), 10), ['07/19', '07/29', '08/08', '08/18', '08/28', '09/07', '09/17', '09/27'])
+plt.tight_layout()
+plt.savefig('./graphs/east_west_absolute_errors.png')
+plt.show()
+
+# Plot absolute errors for North-South (mae_n)
+plt.figure(figsize=(15, 10))
+for i, depth in enumerate(depths_to_plot):
+    plt.subplot(2, 2, i + 1)
+    plt.plot(range(len(mae_n[i])), mae_n[i], color="red", marker="s", markersize=4, linewidth=1)
+    plt.title(f"Globina {depth}m")
+    plt.xlabel("Datum")
+    plt.ylabel("Absolutna napaka")
+    plt.grid(True, linestyle="--", linewidth=0.5, alpha=0.7)
+    plt.xticks(np.arange(0, len(mae_n[i]), 10), ['07/19', '07/29', '08/08', '08/18', '08/28', '09/07', '09/17', '09/27'])
+plt.tight_layout()
+plt.savefig('./graphs/north_south_absolute_errors.png')
+plt.show()
+
+
 
 # Print calculated MAE
 print("\nMean Absolute Error for each depth:")
@@ -146,3 +188,5 @@ for col, (east_vals, north_vals, title_base, ylabel) in enumerate(metrics):
 plt.tight_layout()
 plt.savefig('./graphs/metrics.png')
 plt.show()
+
+
