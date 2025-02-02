@@ -14,6 +14,9 @@ This project is focused on analyzing and visualizing ocean current data, includi
 - **`graphs/`**  
   Contains graphs generated using the `matplotlib` library. These include visualizations of measured and modeled data, as well as comparisons of error metrics like RMSE, MAE, and PCC.
 
+- **`po_flow_rate_data/`**  
+  Contains python file with data, related to Po flow rate in July, August and September 2023.
+
 ### Python Scripts
 - **`AWAC_globine.py`**  
   Prepares the measured AWAC data for analysis. This involves cleaning, interpolating, and formatting the data to align with model data.
@@ -30,6 +33,10 @@ This project is focused on analyzing and visualizing ocean current data, includi
     - Pearson Correlation Coefficient (PCC)  
 
   The results are saved in the `graphs/` folder for visualization and reporting.
+
+- **`vector_similarity.py`**  
+  The second main script for data analysis, focused on vector similarity between measured and modeled data. It uses cosine similarity and euclidean distance to compare the vectors, as well as correlation between Po flow rate and vector similarities.
+ 
 
 ## How to Use
 1. **Prepare the Data:**  

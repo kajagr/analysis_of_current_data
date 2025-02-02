@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from po_flow_rate_data.Pontelagoscuro_Flow_Data_2023 import po_flow
 
 # Load the uo, vo, v1 and v2 values
 uo = np.load('./created_data/uo.npy', allow_pickle=True)
@@ -62,7 +63,6 @@ plt.tight_layout()
 plt.savefig('./graphs/vo.png')
 plt.show()
 
-
 # Calculate RMSE for each depth
 def calculate_rmse(actual, predicted):
     return np.sqrt(np.mean((actual - predicted) ** 2))
@@ -103,7 +103,7 @@ for i in range(len(depths_to_plot)):
     mae_values_east_west[i] = calculate_mae_e(velocities[i]['v1'], velocities[i]['uo'], i)
     mae_values_north_south[i] = calculate_mae_n(velocities[i]['v2'], velocities[i]['vo'], i)
 
-print(mae_e)
+# print(mae_e)
 
 # Plot absolute errors for East-West (mae_e)
 plt.figure(figsize=(15, 10))
@@ -133,8 +133,6 @@ plt.tight_layout()
 plt.savefig('./graphs/north_south_absolute_errors.png')
 plt.show()
 
-
-
 # Print calculated MAE
 print("\nMean Absolute Error for each depth:")
 print("\nEast-West component:")
@@ -143,7 +141,6 @@ for depth, mae in zip(depths_to_plot, mae_values_east_west):
 print("\nNorth-South component:")
 for depth, mae in zip(depths_to_plot, mae_values_north_south):
     print(f"Depth {depth}m: {mae:.4f}")
-
 
 # Calculate Pearson correlation coefficient for each depth
 def calculate_correlation(actual, predicted):
@@ -163,7 +160,6 @@ for depth, corr in zip(depths_to_plot, correlation_values_east_west):
 print("\nNorth-South component:")
 for depth, corr in zip(depths_to_plot, correlation_values_north_south):
     print(f"Depth {depth}m: {corr:.4f}")
-
 
 # Create figure with 6 subplots
 fig, axs = plt.subplots(2, 3, figsize=(15, 10))
@@ -188,5 +184,24 @@ for col, (east_vals, north_vals, title_base, ylabel) in enumerate(metrics):
 plt.tight_layout()
 plt.savefig('./graphs/metrics.png')
 plt.show()
+
+# Extract flow values from po_flow into an array
+flow_values = [day['flow'] for day in po_flow]  
+print(mae_e[0])
+
+correlation_flow_mae_e = np.zeros(len(depths_to_plot))
+correlation_flow_mae_n = np.zeros(len(depths_to_plot))
+for i in range(len(depths_to_plot)):
+    correlation_flow_mae_e[i] = calculate_correlation(mae_e[i], flow_values)
+    correlation_flow_mae_n[i] = calculate_correlation(mae_n[i], flow_values)
+
+# Print calculated PCC
+print("\nCorrelation between Po flow rate and absolute errors:")
+print("\nEast-West component:")
+for depth, corr in zip(depths_to_plot, correlation_flow_mae_e):
+    print(f"Depth {depth}m: {corr:.4f}")
+print("\nNorth-South component:")
+for depth, corr in zip(depths_to_plot, correlation_flow_mae_n):
+    print(f"Depth {depth}m: {corr:.4f}")
 
 
