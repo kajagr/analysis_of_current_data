@@ -31,37 +31,37 @@ for i in range(4):  # For first 4 depths
 x = range(len(dates))
 depths_to_plot = [1.02, 3.17, 5.46, 7.92]
 
-# Plot uo vs v1 comparison
-plt.figure(figsize=(12, 8))
-for i, depth in enumerate(depths_to_plot):
-    plt.subplot(2, 2, i+1)
-    plt.grid(True, color='lightgray', linestyle='-', linewidth=0.5, alpha=0.3)
-    plt.scatter(x, velocities[i]['uo'], color="royalblue", label="Model", s=10)
-    plt.scatter(x, velocities[i]['v1'], color="palevioletred", label="AWAC", s=10)
-    plt.title(f"Globina: {depth}m")
-    plt.xlabel("Datum")
-    plt.ylabel("Hitrost toka (m/s)")
-    plt.xticks(np.arange(0, len(x), 10), ['07/19', '07/29', '08/08', '08/18', '08/28', '09/07', '09/17', '09/27'])
-    plt.legend()
-plt.tight_layout()
-plt.savefig('./graphs/uo.png')
-plt.show()
+# # Plot uo vs v1 comparison
+# plt.figure(figsize=(12, 8))
+# for i, depth in enumerate(depths_to_plot):
+#     plt.subplot(2, 2, i+1)
+#     plt.grid(True, color='lightgray', linestyle='-', linewidth=0.5, alpha=0.3)
+#     plt.scatter(x, velocities[i]['uo'], color="royalblue", label="Model", s=10)
+#     plt.scatter(x, velocities[i]['v1'], color="palevioletred", label="AWAC", s=10)
+#     plt.title(f"Globina: {depth}m")
+#     plt.xlabel("Datum")
+#     plt.ylabel("Hitrost toka (m/s)")
+#     plt.xticks(np.arange(0, len(x), 10), ['07/19', '07/29', '08/08', '08/18', '08/28', '09/07', '09/17', '09/27'])
+#     plt.legend()
+# plt.tight_layout()
+# plt.savefig('./graphs/uo.png')
+# plt.show()
 
-# Plot vo vs v2 comparison  
-plt.figure(figsize=(12, 8))
-for i, depth in enumerate(depths_to_plot):
-    plt.subplot(2, 2, i+1)
-    plt.grid(True, color='lightgray', linestyle='-', linewidth=0.5, alpha=0.3)
-    plt.scatter(x, velocities[i]['vo'], color="royalblue", label="Model", s=10)
-    plt.scatter(x, velocities[i]['v2'], color="palevioletred", label="AWAC", s=10)
-    plt.title(f"Globina: {depth}m")
-    plt.xlabel("Datum")
-    plt.ylabel("Hitrost toka (m/s)")
-    plt.xticks(np.arange(0, len(x), 10), ['07/19', '07/29', '08/08', '08/18', '08/28', '09/07', '09/17', '09/27'])
-    plt.legend()
-plt.tight_layout()
-plt.savefig('./graphs/vo.png')
-plt.show()
+# # Plot vo vs v2 comparison  
+# plt.figure(figsize=(12, 8))
+# for i, depth in enumerate(depths_to_plot):
+#     plt.subplot(2, 2, i+1)
+#     plt.grid(True, color='lightgray', linestyle='-', linewidth=0.5, alpha=0.3)
+#     plt.scatter(x, velocities[i]['vo'], color="royalblue", label="Model", s=10)
+#     plt.scatter(x, velocities[i]['v2'], color="palevioletred", label="AWAC", s=10)
+#     plt.title(f"Globina: {depth}m")
+#     plt.xlabel("Datum")
+#     plt.ylabel("Hitrost toka (m/s)")
+#     plt.xticks(np.arange(0, len(x), 10), ['07/19', '07/29', '08/08', '08/18', '08/28', '09/07', '09/17', '09/27'])
+#     plt.legend()
+# plt.tight_layout()
+# plt.savefig('./graphs/vo.png')
+# plt.show()
 
 # Calculate RMSE for each depth
 def calculate_rmse(actual, predicted):
@@ -105,42 +105,42 @@ for i in range(len(depths_to_plot)):
 
 # print(mae_e)
 
-# Plot absolute errors for East-West (mae_e)
-plt.figure(figsize=(15, 10))
-for i, depth in enumerate(depths_to_plot):
-    plt.subplot(2, 2, i + 1)
-    plt.plot(range(len(mae_e[i])), mae_e[i], color="blue", marker="s", markersize=4, linewidth=1)
-    plt.title(f"Globina {depth}m")
-    plt.xlabel("Datum")
-    plt.ylabel("Absolutna napaka")
-    plt.grid(True, linestyle="--", linewidth=0.5, alpha=0.7)
-    plt.xticks(np.arange(0, len(mae_e[i]), 10), ['07/19', '07/29', '08/08', '08/18', '08/28', '09/07', '09/17', '09/27'])
-plt.tight_layout()
-plt.savefig('./graphs/east_west_absolute_errors.png')
-plt.show()
+# # Plot absolute errors for East-West (mae_e)
+# plt.figure(figsize=(15, 10))
+# for i, depth in enumerate(depths_to_plot):
+#     plt.subplot(2, 2, i + 1)
+#     plt.plot(range(len(mae_e[i])), mae_e[i], color="blue", marker="s", markersize=4, linewidth=1)
+#     plt.title(f"Globina {depth}m")
+#     plt.xlabel("Datum")
+#     plt.ylabel("Absolutna napaka")
+#     plt.grid(True, linestyle="--", linewidth=0.5, alpha=0.7)
+#     plt.xticks(np.arange(0, len(mae_e[i]), 10), ['07/19', '07/29', '08/08', '08/18', '08/28', '09/07', '09/17', '09/27'])
+# plt.tight_layout()
+# plt.savefig('./graphs/east_west_absolute_errors.png')
+# plt.show()
 
-# Plot absolute errors for North-South (mae_n)
-plt.figure(figsize=(15, 10))
-for i, depth in enumerate(depths_to_plot):
-    plt.subplot(2, 2, i + 1)
-    plt.plot(range(len(mae_n[i])), mae_n[i], color="red", marker="s", markersize=4, linewidth=1)
-    plt.title(f"Globina {depth}m")
-    plt.xlabel("Datum")
-    plt.ylabel("Absolutna napaka")
-    plt.grid(True, linestyle="--", linewidth=0.5, alpha=0.7)
-    plt.xticks(np.arange(0, len(mae_n[i]), 10), ['07/19', '07/29', '08/08', '08/18', '08/28', '09/07', '09/17', '09/27'])
-plt.tight_layout()
-plt.savefig('./graphs/north_south_absolute_errors.png')
-plt.show()
+# # Plot absolute errors for North-South (mae_n)
+# plt.figure(figsize=(15, 10))
+# for i, depth in enumerate(depths_to_plot):
+#     plt.subplot(2, 2, i + 1)
+#     plt.plot(range(len(mae_n[i])), mae_n[i], color="red", marker="s", markersize=4, linewidth=1)
+#     plt.title(f"Globina {depth}m")
+#     plt.xlabel("Datum")
+#     plt.ylabel("Absolutna napaka")
+#     plt.grid(True, linestyle="--", linewidth=0.5, alpha=0.7)
+#     plt.xticks(np.arange(0, len(mae_n[i]), 10), ['07/19', '07/29', '08/08', '08/18', '08/28', '09/07', '09/17', '09/27'])
+# plt.tight_layout()
+# plt.savefig('./graphs/north_south_absolute_errors.png')
+# plt.show()
 
-# Print calculated MAE
-print("\nMean Absolute Error for each depth:")
-print("\nEast-West component:")
-for depth, mae in zip(depths_to_plot, mae_values_east_west):
-    print(f"Depth {depth}m: {mae:.4f}")
-print("\nNorth-South component:")
-for depth, mae in zip(depths_to_plot, mae_values_north_south):
-    print(f"Depth {depth}m: {mae:.4f}")
+# # Print calculated MAE
+# print("\nMean Absolute Error for each depth:")
+# print("\nEast-West component:")
+# for depth, mae in zip(depths_to_plot, mae_values_east_west):
+#     print(f"Depth {depth}m: {mae:.4f}")
+# print("\nNorth-South component:")
+# for depth, mae in zip(depths_to_plot, mae_values_north_south):
+#     print(f"Depth {depth}m: {mae:.4f}")
 
 # Calculate Pearson correlation coefficient for each depth
 def calculate_correlation(actual, predicted):
@@ -152,38 +152,38 @@ for i in range(len(depths_to_plot)):
     correlation_values_east_west[i] = calculate_correlation(velocities[i]['v1'], velocities[i]['uo'])
     correlation_values_north_south[i] = calculate_correlation(velocities[i]['v2'], velocities[i]['vo'])
 
-# Print calculated PCC
-print("\nPearson Correlation Coefficient for each depth:")
-print("\nEast-West component:")
-for depth, corr in zip(depths_to_plot, correlation_values_east_west):
-    print(f"Depth {depth}m: {corr:.4f}")
-print("\nNorth-South component:")
-for depth, corr in zip(depths_to_plot, correlation_values_north_south):
-    print(f"Depth {depth}m: {corr:.4f}")
+# # Print calculated PCC
+# print("\nPearson Correlation Coefficient for each depth:")
+# print("\nEast-West component:")
+# for depth, corr in zip(depths_to_plot, correlation_values_east_west):
+#     print(f"Depth {depth}m: {corr:.4f}")
+# print("\nNorth-South component:")
+# for depth, corr in zip(depths_to_plot, correlation_values_north_south):
+#     print(f"Depth {depth}m: {corr:.4f}")
 
-# Create figure with 6 subplots
-fig, axs = plt.subplots(2, 3, figsize=(15, 10))
+# # Create figure with 6 subplots
+# fig, axs = plt.subplots(2, 3, figsize=(15, 10))
 
-metrics = [
-    (rmse_values_east_west, rmse_values_north_south, 'RMSE', 'Kvadtatna srednja napaka'),
-    (mae_values_east_west, mae_values_north_south, 'MAE', 'Srednja absolutna napaka'),
-    (correlation_values_east_west, correlation_values_north_south, 'PCC', 'Pearsonov korelacijski koeficient')
-]
+# metrics = [
+#     (rmse_values_east_west, rmse_values_north_south, 'RMSE', 'Kvadtatna srednja napaka'),
+#     (mae_values_east_west, mae_values_north_south, 'MAE', 'Srednja absolutna napaka'),
+#     (correlation_values_east_west, correlation_values_north_south, 'PCC', 'Pearsonov korelacijski koeficient')
+# ]
 
-# Visualise RMSE, MAE and PCC
-for col, (east_vals, north_vals, title_base, ylabel) in enumerate(metrics):
-    for row, (vals, color) in enumerate([(east_vals, 'b'), (north_vals, 'r')]):
-        ax = axs[row, col]
-        ax.plot(depths_to_plot, vals, f'{color}-o')
-        ax.set_title(f'{title_base} - {"vzhod-zahod" if row==0 else "sever-jug"}')
-        ax.set_xlabel('Globina (m)')
-        ax.set_ylabel(ylabel)
-        ax.grid(True)
-        ax.set_xticks(depths_to_plot)
-        ax.set_xticklabels(depths_to_plot)
-plt.tight_layout()
-plt.savefig('./graphs/metrics.png')
-plt.show()
+# # Visualise RMSE, MAE and PCC
+# for col, (east_vals, north_vals, title_base, ylabel) in enumerate(metrics):
+#     for row, (vals, color) in enumerate([(east_vals, 'b'), (north_vals, 'r')]):
+#         ax = axs[row, col]
+#         ax.plot(depths_to_plot, vals, f'{color}-o')
+#         ax.set_title(f'{title_base} - {"vzhod-zahod" if row==0 else "sever-jug"}')
+#         ax.set_xlabel('Globina (m)')
+#         ax.set_ylabel(ylabel)
+#         ax.grid(True)
+#         ax.set_xticks(depths_to_plot)
+#         ax.set_xticklabels(depths_to_plot)
+# plt.tight_layout()
+# plt.savefig('./graphs/metrics.png')
+# plt.show()
 
 # Extract flow values from po_flow into an array
 flow_values = [day['flow'] for day in po_flow]  
@@ -203,5 +203,33 @@ for depth, corr in zip(depths_to_plot, correlation_flow_mae_e):
 print("\nNorth-South component:")
 for depth, corr in zip(depths_to_plot, correlation_flow_mae_n):
     print(f"Depth {depth}m: {corr:.4f}")
+
+# Calculate Spearman rank correlation coefficient - more relevant then Pears
+def calculate_spearman_correlation(x, y):
+    # Convert arrays to ranks
+    rank_x = np.argsort(np.argsort(x))
+    rank_y = np.argsort(np.argsort(y))
+    
+    d = rank_x - rank_y
+    d_squared = d ** 2
+    n = len(x)
+    rho = 1 - (6 * np.sum(d_squared)) / (n * (n**2 - 1))
+    return rho
+
+spearman_flow_mae_e = np.zeros(len(depths_to_plot))
+spearman_flow_mae_n = np.zeros(len(depths_to_plot))
+for i in range(len(depths_to_plot)):
+    spearman_flow_mae_e[i] = calculate_spearman_correlation(mae_e[i], flow_values)
+    spearman_flow_mae_n[i] = calculate_spearman_correlation(mae_n[i], flow_values)
+
+# Print calculated Spearman correlation coefficients
+print("\nSpearman correlation between Po flow rate and absolute errors:")
+print("\nEast-West component:")
+for depth, corr in zip(depths_to_plot, spearman_flow_mae_e):
+    print(f"Depth {depth}m: {corr:.4f}")
+print("\nNorth-South component:")
+for depth, corr in zip(depths_to_plot, spearman_flow_mae_n):
+    print(f"Depth {depth}m: {corr:.4f}")
+
 
 

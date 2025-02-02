@@ -159,3 +159,33 @@ for depth, corr in zip(depths_to_plot, correlation_flow_cos):
 print("\nEuclidean distance and flow:")
 for depth, corr in zip(depths_to_plot, correlation_flow_euclid):
     print(f"Depth {depth}m: {corr:.4f}")
+
+# Calculate Spearman rank correlation coefficient - more relevant then Pears
+def calculate_spearman_correlation(x, y):
+    # Convert arrays to ranks
+    rank_x = np.argsort(np.argsort(x))
+    rank_y = np.argsort(np.argsort(y))
+    
+    d = rank_x - rank_y
+    d_squared = d ** 2
+    n = len(x)
+    rho = 1 - (6 * np.sum(d_squared)) / (n * (n**2 - 1))
+    return rho
+
+# Calculate Spearman correlation for cosine similarity and euclidean distance
+spearman_flow_cos = np.zeros(len(depths_to_plot))
+spearman_flow_euclid = np.zeros(len(depths_to_plot))
+for i in range(len(depths_to_plot)):
+    cos_sim_values = [sim['cosine_similarity'] for sim in similarities[depths_to_plot[i]]]
+    euclid_d_values = [sim['euclidean_distance'] for sim in similarities[depths_to_plot[i]]]
+    spearman_flow_cos[i] = calculate_spearman_correlation(cos_sim_values[1:], flow_values[1:]) # skip first value as it's nan
+    spearman_flow_euclid[i] = calculate_spearman_correlation(euclid_d_values, flow_values)
+
+# Print calculated Spearman correlation coefficients
+print("\nSpearman correlation between Po flow rate and vector similarities:")
+print("\nCosine similarity and flow:")
+for depth, corr in zip(depths_to_plot, spearman_flow_cos):
+    print(f"Depth {depth}m: {corr:.4f}")
+print("\nEuclidean distance and flow:")
+for depth, corr in zip(depths_to_plot, spearman_flow_euclid):
+    print(f"Depth {depth}m: {corr:.4f}")
