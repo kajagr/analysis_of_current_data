@@ -155,10 +155,50 @@ def daily_average(data):
 average_daily_v1 = daily_average(v1_data_interpolated)
 average_daily_v2 = daily_average(v2_data_interpolated)
 
+# Function that handles hourly averages from values measured every 30 minutes
+def hourly_average(data):
+    hourly_averages = []
+    hours = []
+    start_date = datetime.datetime(2023, 7, 18, 14, 0)  # Starting from 07-18-2023 14:00
+    current_time = start_date
+    
+    # Handle subsequent hours (2 measurements each)
+    for i in range(2, len(data), 2):
+        hour_data = data[i:i+2]
+        if [] in hour_data:
+            hourly_averages.append([])
+            current_time += timedelta(hours=1)
+            hours.append(current_time)
+            continue
+        if hour_data:
+            hour_sum = [0, 0, 0, 0, 0, 0, 0, 0]
+            for hour in hour_data:
+                if hour == []:
+                    break
+                for ix in range(0, 8):
+                    hour_sum[ix] += float(hour[ix])
+            hourly_averages.append([sum_value / len(hour_data) for sum_value in hour_sum])
+            current_time += timedelta(hours=1)
+            hours.append(current_time)
+
+    return list(zip(hours, hourly_averages))
+
+# Calculate hourly averages
+average_hourly_v1 = hourly_average(v1_data_interpolated)[20:-960]
+average_hourly_v2 = hourly_average(v2_data_interpolated)[20:-960]
+
+# print(average_hourly_v2[0]) #0:-960
+
 # Convert to numpy arrays before saving (some wierd error occured)
 v1_array = np.array(average_daily_v1, dtype=object)
 v2_array = np.array(average_daily_v2, dtype=object)
+v1_array_hourly = np.array(average_hourly_v1, dtype=object)
+v2_array_hourly = np.array(average_hourly_v2, dtype=object)
 
-# Save the modified v1 and v2 values so we can use them for further analysis
+# Save the modified v1 and v2 values so we can use them for further analysis (both are with daily data)
 np.save('./created_data/v1.npy', v1_array)
 np.save('./created_data/v2.npy', v2_array)
+
+# Save the modified v1_array_hourly and v2_array_hourly values so we can use them for further analysis (both are with hourly data)
+np.save('./created_data/v1_h.npy', v1_array_hourly)
+np.save('./created_data/v2_h.npy', v2_array_hourly)

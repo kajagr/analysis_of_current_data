@@ -1,3 +1,7 @@
+# Flow rate data for Po river at Pontelagoscuro station in 2023
+# To import this data in other files use:
+# from po_flow_rate_data.Pontelagoscuro_Flow_Data_2023 import po_flow
+
 po_flow = [
     {'date': '2023-07-19', 'flow': 385},
     {'date': '2023-07-20', 'flow': 357},
@@ -73,3 +77,5 @@ po_flow = [
     {'date': '2023-09-28', 'flow': 1820},
     {'date': '2023-09-29', 'flow': 1670},
 ]
+
+__all__ = ['po_flow']

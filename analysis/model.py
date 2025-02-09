@@ -3,6 +3,7 @@ import numpy as np
 
 # Reading in the netCDF file
 data = Dataset('cmems_mod_med_phy-cur_anfc_4.2km_P1D-m_1731243597339.nc', 'r')
+# data1 = Dataset('cmems_mod_med_phy-cur_anfc_4.2km-2D_PT1H-m_1738760586254.nc', 'r')
 
 # type(data)
 # print(data)

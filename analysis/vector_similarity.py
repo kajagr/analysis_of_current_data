@@ -1,12 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from po_flow_rate_data.Pontelagoscuro_Flow_Data_2023 import po_flow
+from wind_data.wind_data import wind
 
 # Load the uo, vo, v1 and v2 values
 uo = np.load('./created_data/uo.npy', allow_pickle=True)
 v1 = np.load('./created_data/v1.npy', allow_pickle=True)
 vo = np.load('./created_data/vo.npy', allow_pickle=True)
 v2 = np.load('./created_data/v2.npy', allow_pickle=True)
+v1_h = np.load('./created_data/v1_h.npy', allow_pickle=True)
+v2_h = np.load('./created_data/v2_h.npy', allow_pickle=True)
 
 # Define the depths
 depths = [1.02, 3.17, 5.46, 7.92, 10.54, 13.32, 16.27, 19.39821]
@@ -17,8 +20,6 @@ velocities_v1 = v1[1:-40, 1:]
 velocities_v2 = v2[1:-40, 1:]
 velocities_uo = uo[1:-40]
 velocities_vo = vo[1:-40]
-
-print(dates[-1])
 
 # Extract velocities for each depth
 velocities = []
@@ -118,7 +119,7 @@ for i, depth in enumerate(depths_to_plot):
     plt.grid(True)
 plt.tight_layout()
 plt.savefig('./graphs/dot_product_similarities.png')
-plt.show()
+# plt.show()
 
 # Plot euclidean distances
 plt.figure(figsize=(15, 10))
@@ -133,7 +134,7 @@ for i, depth in enumerate(depths_to_plot):
     plt.grid(True)
 plt.tight_layout()
 plt.savefig('./graphs/euclidean_distances.png')
-plt.show()
+# plt.show()
 
 # Calculate Pearson correlation coefficient
 def calculate_correlation(actual, predicted):
@@ -189,3 +190,38 @@ for depth, corr in zip(depths_to_plot, spearman_flow_cos):
 print("\nEuclidean distance and flow:")
 for depth, corr in zip(depths_to_plot, spearman_flow_euclid):
     print(f"Depth {depth}m: {corr:.4f}")
+
+
+# From here on I am importing modeled wind data and analysing it to see if there is any correlation with measured data
+
+# Create empty dictionary to store vectors and magnitudes for v1_h and v2_h
+v_h_data = {depth: [] for depth in depths_to_plot}
+
+# Loop through each depth and calculate vector and magnitude for each day
+for i, depth in enumerate(depths_to_plot):
+    for day in range(len(v1_h)):
+        date = v1_h[day][0]
+        v_h_vector = [v1_h[day][1][i], v2_h[day][1][i]]  
+        v_h_magnitude = np.sqrt(v_h_vector[0]**2 + v_h_vector[1]**2)
+        v_h_data[depth].append({
+            'date': date,
+            'vector': v_h_vector,
+            'magnitude': v_h_magnitude
+        })
+# print(len(v_h_data[1.02]))
+
+# Calculate correlation and cosine similarity between wind and v_h_data for 1.02m depth
+wind_magnitudes = []
+v_h_magnitudes = []
+
+# Extract wind data for matching dates
+for v_h_entry, wind_i in zip(v_h_data[1.02], wind):
+    if wind_i['wind_speed'] is not None and wind_i['wind_dir'] is not None:
+        wind_magnitudes.append(wind_i['wind_speed'])
+        v_h_magnitudes.append(v_h_entry['magnitude'])
+
+wind_awac_correlation_spearman = calculate_spearman_correlation(wind_magnitudes, v_h_magnitudes)
+
+print("\nCorrelation between wind and currents at 1.02m depth:")
+print(f"Spearman correlation: {wind_awac_correlation_spearman:.4f}")
+# print(f"Mean cosine similarity: {cosine_similarity_mean:.4f}")
