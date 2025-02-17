@@ -125,7 +125,7 @@ plt.savefig('./graphs/east_west_absolute_errors.png')
 plt.figure(figsize=(15, 10))
 for i, depth in enumerate(depths_to_plot):
     plt.subplot(2, 2, i + 1)
-    plt.plot(range(len(mae_n[i])), mae_n[i], color="red", marker="s", markersize=4, linewidth=1)
+    plt.plot(range(len(mae_n[i])), mae_n[i], color="blue", marker="s", markersize=4, linewidth=1)
     plt.title(f"Globina {depth}m")
     plt.xlabel("Datum")
     plt.ylabel("Absolutna napaka")
@@ -164,12 +164,11 @@ for depth, corr in zip(depths_to_plot, correlation_values_north_south):
     print(f"Depth {depth}m: {corr:.4f}")
 
 # Create figure with 6 subplots
-fig, axs = plt.subplots(2, 3, figsize=(15, 10))
+fig, axs = plt.subplots(2, 2, figsize=(15, 10))
 
 metrics = [
     (rmse_values_east_west, rmse_values_north_south, 'RMSE', 'Kvadtatna srednja napaka'),
     (mae_values_east_west, mae_values_north_south, 'MAE', 'Srednja absolutna napaka'),
-    (correlation_values_east_west, correlation_values_north_south, 'PCC', 'Pearsonov korelacijski koeficient')
 ]
 
 # Visualise RMSE, MAE and PCC

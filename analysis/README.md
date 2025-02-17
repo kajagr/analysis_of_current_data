@@ -36,7 +36,9 @@ This project is focused on analyzing and visualizing ocean current data, includi
 
 - **`vector_similarity.py`**  
   The second main script for data analysis, focused on vector similarity between measured and modeled data. It uses cosine similarity and euclidean distance to compare the vectors, as well as correlation between Po flow rate and vector similarities.
- 
+
+- **`model_prediction.py`**  
+  This script is responsible for predicting ocean current data using machine learning models. 
 
 ## How to Use
 1. **Prepare the Data:**  
@@ -54,6 +56,7 @@ This project is focused on analyzing and visualizing ocean current data, includi
   - `numpy`
   - `pandas`
   - `matplotlib`
+  - `scikit-learn`
 
 ## Key Metrics Explained
 - **Root Mean Square Error (RMSE):** Measures the average magnitude of the error between the model and measured data. Lower values indicate better agreement.  
