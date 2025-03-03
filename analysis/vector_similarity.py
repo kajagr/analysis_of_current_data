@@ -96,7 +96,7 @@ plt.figure(figsize=(15, 10))
 for i, depth in enumerate(depths_to_plot):
     plt.subplot(2, 2, i+1)
     cos_sims = [sim['cosine_similarity'] for sim in similarities[depth]]
-    plt.plot(range(len(cos_sims)), cos_sims, marker='o')
+    plt.plot(range(len(cos_sims)), cos_sims, marker='o', color='royalblue')
     plt.title(f'Globina {depth}m')
     plt.xlabel('Datum')
     plt.ylabel('Kosinusna podobnost')
@@ -111,7 +111,7 @@ plt.figure(figsize=(15, 10))
 for i, depth in enumerate(depths_to_plot):
     plt.subplot(2, 2, i+1)
     dot_sims = [sim['dot_product_similarity'] for sim in similarities[depth]]
-    plt.plot(range(len(dot_sims)), dot_sims, marker='o')
+    plt.plot(range(len(dot_sims)), dot_sims, marker='o', color='royalblue')
     plt.title(f'Globina {depth}m')
     plt.xlabel('Datum')
     plt.ylabel('Vektorski produkt')
@@ -126,7 +126,7 @@ plt.figure(figsize=(15, 10))
 for i, depth in enumerate(depths_to_plot):
     plt.subplot(2, 2, i+1)
     euc_dists = [sim['euclidean_distance'] for sim in similarities[depth]]
-    plt.plot(range(len(euc_dists)), euc_dists, marker='o')
+    plt.plot(range(len(euc_dists)), euc_dists, marker='o', color='royalblue')
     plt.title(f'Globina {depth}m')
     plt.xlabel('Datum')
     plt.ylabel('Evklidska razdalja')

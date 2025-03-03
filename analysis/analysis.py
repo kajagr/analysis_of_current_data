@@ -111,7 +111,7 @@ for i in range(len(depths_to_plot)):
 plt.figure(figsize=(15, 10))
 for i, depth in enumerate(depths_to_plot):
     plt.subplot(2, 2, i + 1)
-    plt.plot(range(len(mae_e[i])), mae_e[i], color="blue", marker="s", markersize=4, linewidth=1)
+    plt.plot(range(len(mae_e[i])), mae_e[i], color="royalblue", marker="s", markersize=4, linewidth=1)
     plt.title(f"Globina {depth}m")
     plt.xlabel("Datum")
     plt.ylabel("Absolutna napaka")
@@ -125,7 +125,7 @@ plt.savefig('./graphs/east_west_absolute_errors.png')
 plt.figure(figsize=(15, 10))
 for i, depth in enumerate(depths_to_plot):
     plt.subplot(2, 2, i + 1)
-    plt.plot(range(len(mae_n[i])), mae_n[i], color="blue", marker="s", markersize=4, linewidth=1)
+    plt.plot(range(len(mae_n[i])), mae_n[i], color="royalblue", marker="s", markersize=4, linewidth=1)
     plt.title(f"Globina {depth}m")
     plt.xlabel("Datum")
     plt.ylabel("Absolutna napaka")
@@ -278,5 +278,21 @@ for depth, error in zip(depths_to_plot, mae_e):
     print(f"Depth {depth}m: {error:.4f}")
 print("\nNorth-South component:")
 for depth, error in zip(depths_to_plot, mae_n):
+    print(f"Depth {depth}m: {error:.4f}")
+
+# Calculate MAE for flow velocities
+mae_flow = np.zeros(len(depths_to_plot))
+
+for i, depth in enumerate(depths_to_plot):
+    abs_errors_flow = []
+    for day in range(len(velocities[i]['v1'])):
+        flow_velocity_model = np.sqrt(velocities[i]['uo'][day]**2 + velocities[i]['vo'][day]**2)
+        flow_velocity_awac = np.sqrt(velocities[i]['v1'][day]**2 + velocities[i]['v2'][day]**2)
+        abs_errors_flow.append(abs(flow_velocity_model - flow_velocity_awac))
+    mae_flow[i] = np.mean(abs_errors_flow)
+
+# Print calculated MAE for flow velocities
+print("\nMean Absolute Error (MAE) for flow velocities:")
+for depth, error in zip(depths_to_plot, mae_flow):
     print(f"Depth {depth}m: {error:.4f}")
 
